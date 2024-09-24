@@ -38,7 +38,7 @@ router.get("/level2",isLoggedin, async (req, res) => {
         let user = await userModel.findOne({name: req.user.name});
         let error = req.flash("error");
         let success = req.flash("success");
-        if(user.currLevel==2){
+        if(user.currLevel>=2){
             res.render("level2", {error,success});
         }
         else{
@@ -55,7 +55,7 @@ router.get("/level3",isLoggedin, async (req, res) => {
         let user = await userModel.findOne({name: req.user.name});
         let error = req.flash("error");
         let success = req.flash("success");
-        if(user.currLevel==3){
+        if(user.currLevel>=3){
             res.render("level3", {error,success});
         }
         else{
@@ -72,7 +72,7 @@ router.get("/level4",isLoggedin, async (req, res) => {
         let user = await userModel.findOne({name: req.user.name});
         let error = req.flash("error");
         let success = req.flash("success");
-        if(user.currLevel==4){
+        if(user.currLevel>=4){
             res.render("level4", {error,success});
         }
         else{
@@ -89,7 +89,7 @@ router.get("/level5",isLoggedin, async (req, res) => {
         let user = await userModel.findOne({name: req.user.name});
         let error = req.flash("error");
         let success = req.flash("success");
-        if(user.currLevel==5){
+        if(user.currLevel>=5){
             res.render("level5", {error,success});
         }
         else{
@@ -106,7 +106,7 @@ router.get("/level6",isLoggedin, async (req, res) => {
         let user = await userModel.findOne({name: req.user.name});
         let error = req.flash("error");
         let success = req.flash("success");
-        if(user.currLevel==6){
+        if(user.currLevel>=6){
             res.render("level6", {error,success});
         }
         else{
@@ -124,7 +124,7 @@ router.get("/level7",isLoggedin, async (req, res) => {
         let user = await userModel.findOne({name: req.user.name});
         let error = req.flash("error");
         let success = req.flash("success");
-        if(user.currLevel==7){
+        if(user.currLevel>=7){
             res.render("level7", {error,success});
         }
         else{
@@ -136,6 +136,92 @@ router.get("/level7",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+router.get("/level8",isLoggedin, async (req, res) => {
+    try {
+        let user = await userModel.findOne({name: req.user.name});
+        let error = req.flash("error");
+        let success = req.flash("success");
+        if(user.currLevel>=8){
+            res.render("level8", {error,success});
+        }
+        else{
+            res.send("Access Denied");
+        }
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.get("/level9",isLoggedin, async (req, res) => {
+    try {
+        let user = await userModel.findOne({name: req.user.name});
+        let error = req.flash("error");
+        let success = req.flash("success");
+        if(user.currLevel>=9){
+            res.render("level9", {error,success});
+        }
+        else{
+            res.send("Access Denied");
+        }
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.get("/level10",isLoggedin, async (req, res) => {
+    try {
+        let user = await userModel.findOne({name: req.user.name});
+        let error = req.flash("error");
+        let success = req.flash("success");
+        if(user.currLevel>=10){
+            res.render("level10", {error,success});
+        }
+        else{
+            res.send("Access Denied");
+        }
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.get("/level11",isLoggedin, async (req, res) => {
+    try {
+        let user = await userModel.findOne({name: req.user.name});
+        let error = req.flash("error");
+        let success = req.flash("success");
+        if(user.currLevel>=11){
+            res.render("level11", {error,success});
+        }
+        else{
+            res.send("Access Denied");
+        }
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.get("/level12",isLoggedin, async (req, res) => {
+    try {
+        let user = await userModel.findOne({name: req.user.name});
+        let error = req.flash("error");
+        let success = req.flash("success");
+        if(user.currLevel>=12){
+            res.render("level12", {error,success});
+        }
+        else{
+            res.send("Access Denied");
+        }
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 
 

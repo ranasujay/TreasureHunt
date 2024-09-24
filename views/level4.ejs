@@ -24,13 +24,13 @@
 <body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
   
   <% if (typeof success !== 'undefined' && success.length > 0) { %>
-    <div class="absolute top-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-center py-2 px-4 rounded-lg">
+    <div class="z-10 absolute top-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-center py-2 px-4 rounded-lg">
       <%= success %>
     </div>
   <% } %>
 
   <% if (typeof error !== 'undefined' && error.length > 0) { %>
-    <div class="absolute top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-center py-2 px-4 rounded-lg">
+    <div class="z-10 absolute top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-center py-2 px-4 rounded-lg">
       <%= error %>
     </div>
   <% } %>
@@ -42,19 +42,18 @@
     <form action="/checker/level5" method="POST" class="space-y-6">
       <!-- Answer Input -->
       <div>
-        <div class="text-gray-900 text-2xl mb-3">
+        <div class="text-gray-900 text-lm mb-3">
           <h2 class="mb-2">Do you like mathematics??</h2>
           <div class="flex">
               <h2 class="mb-2">your answer = {3+(6-2)/2*2-(6/3*4)+1}</h2>
-
             </div>
 
         </div>
-          <label for="ans" class="block text-xl font-medium text-white">Enter your answer</label>
+          <label for="ans" class="block text-lm font-medium text-white">Enter your answer</label>
           <input id="ans" name="ans" type="text" required
           class="mt-1 block w-full px-3 py-2 bg-gray-600 text-gray-300 rounded-md 
                       focus:outline-none focus:ring-2 focus:ring-indigo-500
-                      placeholder-gray-400"
+                      placeholder-gray-400" autocomplete="off"
                placeholder="Enter your answer">
       </div>
 

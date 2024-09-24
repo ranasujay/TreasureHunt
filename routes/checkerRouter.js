@@ -135,7 +135,7 @@ router.post("/level6",isLoggedin, async (req, res) => {
 router.post("/level7",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;
-        let myans1 = "1";
+        let myans1 = "700106";
         if(ans===myans1){
             let user = await userModel.findOne({name: req.user.name});
             if (user) {
@@ -157,4 +157,143 @@ router.post("/level7",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
+router.post("/level8",isLoggedin, async (req, res) => {
+    try {
+        let {ans} = req.body;
+        let myans1 = "11";
+        let myans2 = "12";
+        if(ans===myans1 || ans===myans2){
+            let user = await userModel.findOne({name: req.user.name});
+            if (user) {
+                user.currLevel = 8; // Update currLevel directly
+                await user.save();  // Save the updated document
+                req.flash('success', 'Congratulations! You have completed Level 7.');
+                res.redirect("/level8");
+            } else {
+                req.flash("error", "User not found");
+                res.redirect("/login");
+            }
+        }
+        else{
+            let error = req.flash("error", "Incorrect answer");
+            res.redirect("/level7");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+router.post("/level9",isLoggedin, async (req, res) => {
+    try {
+        let {ans} = req.body;
+        let myans1 = "money heist";
+        let myans2 = "Money heist";
+        if(ans===myans1 || ans===myans2){
+            let user = await userModel.findOne({name: req.user.name});
+            if (user) {
+                user.currLevel = 9; // Update currLevel directly
+                await user.save();  // Save the updated document
+                req.flash('success', 'Congratulations! You have completed Level 8.');
+                res.redirect("/level9");
+            } else {
+                req.flash("error", "User not found");
+                res.redirect("/login");
+            }
+        }
+        else{
+            let error = req.flash("error", "Incorrect answer");
+            res.redirect("/level8");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.post("/level10",isLoggedin, async (req, res) => {
+    try {
+        let {ans} = req.body;
+        let myans1 = "e75hy6r";
+        if(ans===myans1){
+            let user = await userModel.findOne({name: req.user.name});
+            if (user) {
+                user.currLevel = 10; // Update currLevel directly
+                await user.save();  // Save the updated document
+                req.flash('success', 'Congratulations! You have completed Level 9.');
+                res.redirect("/level10");
+            } else {
+                req.flash("error", "User not found");
+                res.redirect("/login");
+            }
+        }
+        else{
+            let error = req.flash("error", "Incorrect answer");
+            res.redirect("/level9");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.post("/level11",isLoggedin, async (req, res) => {
+    try {
+        let {ans} = req.body;
+        let myans1 = "last name";
+        let myans2 = "Last name";
+        let myans3 = "surname";
+        let myans4 = "Surname";
+        if(ans===myans1 || ans==myans2 || ans==myans3 || ans==myans4){
+            let user = await userModel.findOne({name: req.user.name});
+            if (user) {
+                user.currLevel = 11; // Update currLevel directly
+                await user.save();  // Save the updated document
+                req.flash('success', 'Congratulations! You have completed Level 10.');
+                res.redirect("/level11");
+            } else {
+                req.flash("error", "User not found");
+                res.redirect("/login");
+            }
+        }
+        else{
+            let error = req.flash("error", "Incorrect answer");
+            res.redirect("/level10");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.post("/level12",isLoggedin, async (req, res) => {
+    try {
+        let {ans} = req.body;
+        let myans1 = "TIPT";
+        let myans2 = "IPTF";
+        let myans3 = "TITF";
+        let myans4 = "TIPF";
+        let myans5 = "TIPT";
+        let myans6 = "TIPTF";
+        
+        if(ans===myans1 || ans==myans2 || ans==myans3 || ans==myans4  || ans==myans5  || ans==myans6){
+            let user = await userModel.findOne({name: req.user.name});
+            if (user) {
+                user.currLevel = 12; // Update currLevel directly
+                await user.save();  // Save the updated document
+                req.flash('success', 'Congratulations! You have completed Level 11.');
+                res.redirect("/level12");
+            } else {
+                req.flash("error", "User not found");
+                res.redirect("/login");
+            }
+        }
+        else{
+            let error = req.flash("error", "Incorrect answer");
+            res.redirect("/level11");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 module.exports =  router;
