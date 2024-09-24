@@ -118,7 +118,6 @@ router.get("/level6",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-
 router.get("/level7",isLoggedin, async (req, res) => {
     try {
         let user = await userModel.findOne({name: req.user.name});

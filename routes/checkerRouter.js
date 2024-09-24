@@ -243,6 +243,10 @@ router.post("/level11",isLoggedin, async (req, res) => {
         let myans2 = "Last name";
         let myans3 = "surname";
         let myans4 = "Surname";
+        let myans5 = "Surname ";
+        let myans6 = "Surname ";
+        let myans7 = "Last name ";
+        let myans8 = "last name ";
         if(ans===myans1 || ans==myans2 || ans==myans3 || ans==myans4){
             let user = await userModel.findOne({name: req.user.name});
             if (user) {
