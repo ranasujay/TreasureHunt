@@ -82,8 +82,8 @@ router.post("/level4",isLoggedin, async (req, res) => {
 router.post("/level5",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;
-        let myans1 = " {3+(6-2)/2*2-(6/3*4)+1}";
-        let myans2 = "{3+(6-2)/2*2-(6/3*4)+1}";
+        let myans1 = " {3 + (6 - 2) / 2 * 2 - (6 / 3 * 4) + 1}";
+        let myans2 = "{3 + (6 - 2) / 2 * 2 - (6 / 3 * 4) + 1}";
         if(ans===myans1 || ans===myans2){
             let user = await userModel.findOne({name: req.user.name});
             if (user) {
