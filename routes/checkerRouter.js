@@ -190,7 +190,9 @@ router.post("/level9",isLoggedin, async (req, res) => {
         let {ans} = req.body;
         let myans1 = "money heist";
         let myans2 = "Money heist";
-        if(ans===myans1 || ans===myans2){
+        let myans3 = "money heist ";
+        let myans4 = "Money heist ";
+        if(ans===myans1 || ans===myans2 || ans==myans3 || ans==myans4){
             let user = await userModel.findOne({name: req.user.name});
             if (user) {
                 user.currLevel = 9; // Update currLevel directly
@@ -247,7 +249,14 @@ router.post("/level11",isLoggedin, async (req, res) => {
         let myans6 = "Surname ";
         let myans7 = "Last name ";
         let myans8 = "last name ";
-        if(ans===myans1 || ans==myans2 || ans==myans3 || ans==myans4){
+        let myans9 = "Title ";
+        let myans10 = "Title";
+        let myans11 = "title";
+        let myans12 = "title ";
+        if(ans===myans1 || ans==myans2 || ans==myans3 || ans==myans4 ||
+            ans===myans5 || ans==myans6 || ans==myans7 || ans==myans8 ||
+            ans===myans9 || ans==myans10 || ans==myans11 || ans==myans12
+        ){
             let user = await userModel.findOne({name: req.user.name});
             if (user) {
                 user.currLevel = 11; // Update currLevel directly

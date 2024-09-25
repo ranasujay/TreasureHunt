@@ -14,12 +14,20 @@
       background-repeat: no-repeat;
       min-height: 100vh;
     }
-    
+
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-hover:hover {
+      transform: translateY(-3px);
+      background-color: #4c51bf; /* Slightly darker indigo */
+    }
   </style>
-
-
-
-
 </head>
 <body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
 
@@ -36,37 +44,35 @@
   <% } %>
 
   <!-- Main Content -->
-  <div class="w-full max-w-md rounded-lg shadow-lg p-8 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg border border-gray-300">
-    <h2 class="text-2xl font-semibold text-white text-center mb-6">Treasure Hunt Level 2</h2>
+  <div class="w-full max-w-md rounded-lg shadow-lg p-8 glass">
+    <h2 class="text-3xl font-semibold text-white text-center mb-6">Treasure Hunt Level 2</h2>
 
-    
-    
-    
     <form action="/checker/level3" method="POST" class="space-y-6">
-      <!-- Answer Input -->
+      <!-- Challenge Text -->
       <div>
-        <p class="mb-2">"Think you're up for the challenge? Can you crack the code and solve the mystery?"</p>
-        <div class="text-white flex text-xl mb-3">
-            <a class="text-red underline" href="https://drive.google.com/file/d/1XJSezvM4Q2iZVBdl7wr7AeXW9ezo22tz/view" target="_blank">click me</a>
+        <p class="mb-4 text-white text-lg text-center">Think you're up for the challenge? Can you crack the code and solve the mystery?</p>
+        <div class="text-white flex text-xl justify-center mb-4">
+            <a class="text-red-400 underline" href="https://drive.google.com/file/d/1XJSezvM4Q2iZVBdl7wr7AeXW9ezo22tz/view" target="_blank">Click to View Challenge</a>
         </div>
         
-        <label for="ans" class="block text-xl font-medium text-white">Your answer</label>
+        <!-- Answer Input -->
+        <label for="ans" class="block text-xl font-medium text-white mb-2">Your Answer</label>
         <input id="ans" name="ans" type="text" required
-               class="mt-1 block w-full px-3 py-2 bg-gray-600 text-gray-300 rounded-md 
-                      focus:outline-none focus:ring-2 focus:ring-indigo-500
+               class="w-full px-4 py-3 bg-gray-700 text-white rounded-md 
+                      focus:outline-none focus:ring-4 focus:ring-indigo-500 transition-all duration-200
                       placeholder-gray-400" autocomplete="off"
-               placeholder="Enter your answer">
+               placeholder="Enter your answer here...">
       </div>
 
       <!-- Submit Button -->
       <div>
         <button type="submit" 
                 class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md 
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
+                       transition-all duration-300 btn-hover">
           Submit
         </button>
       </div>
-
     </form>
   </div>
 

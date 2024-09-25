@@ -10,9 +10,32 @@
     body {
       background-image: url('../images/background.webp');
       background-size: cover;
-      background-position: center; 
+      background-position: center;
       background-repeat: no-repeat;
       min-height: 100vh;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-hover:hover {
+      transform: translateY(-3px);
+      background-color: #4c51bf;
+    }
+
+    .image-container img {
+      object-fit: cover;
+    }
+
+    @media (max-width: 640px) {
+      .image-container img {
+        height: 180px;
+      }
     }
   </style>
 </head>
@@ -30,33 +53,35 @@
     </div>
   <% } %>
 
-  <div class="w-full max-w-md rounded-lg shadow-lg p-8 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg border border-gray-300">
-    <h2 class="text-2xl font-semibold text-white text-center mb-6">Treasure Hunt Level 1</h2>
-  
+  <!-- Main Content -->
+  <div class="w-full max-w-md rounded-lg shadow-lg p-6 glass">
+    <h2 class="text-3xl font-semibold text-white text-center mb-6">Treasure Hunt Level 1</h2>
+
     <form action="/checker/level2" method="POST" class="space-y-6">
       <div>
-        <h1 class="text-xl text-white mb-2">How many branches are there? : </h1>
-        <div class="flex justify-center"> 
-          <img class="rounded-md mb-2 h-60" src="../images/level1.jpeg" alt="not found">
+        <h1 class="text-lg md:text-xl text-white mb-4 text-center">How many branches are there?</h1>
+        <div class="image-container flex justify-center mb-4">
+          <img class="rounded-md h-60 w-full object-cover" src="../images/level1.jpeg" alt="level 1 challenge image">
         </div>
-        <label for="ans" class="bolck text-xl text-white">Your answer</label>
+        <label for="ans" class="block text-xl font-medium text-white mb-2">Your answer</label>
         <input id="ans" name="ans" type="text" required
-               class="mt-1 block w-full px-3 py-2 bg-gray-600 text-gray-300 rounded-md 
-                      focus:outline-none focus:ring-2 focus:ring-indigo-500
+               class="block w-full px-4 py-3 bg-gray-700 text-white rounded-md 
+                      focus:outline-none focus:ring-4 focus:ring-indigo-500 transition-all duration-200
                       placeholder-gray-400" autocomplete="off"
                placeholder="Enter your answer (Number)">
       </div>
-  
+
+      <!-- Submit Button -->
       <div>
         <button type="submit" 
                 class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md 
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
+                       transition-all duration-300 btn-hover">
           Submit
         </button>
       </div>
     </form>
   </div>
-  
 
 </body>
 </html>

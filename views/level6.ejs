@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treasure Hunt Level 6</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  
 
   <style>
     body {
@@ -15,12 +14,15 @@
       background-repeat: no-repeat;
       min-height: 100vh;
     }
-    
+
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
   </style>
-
-
-
-
 </head>
 <body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
   
@@ -37,30 +39,32 @@
   <% } %>
 
   <!-- Main Content -->
-  <div class="w-full max-w-md rounded-lg shadow-lg p-8 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg border border-gray-300">
-    <h2 class="text-2xl font-semibold text-white text-center mb-6">Treasure Hunt Level 6</h2>
+  <div class="w-full max-w-md rounded-lg shadow-lg p-8 glass">
+    <h2 class="text-3xl font-semibold text-white text-center mb-6">Treasure Hunt Level 6</h2>
 
     <form action="/checker/level7" method="POST" class="space-y-6">
-      <!-- Answer Input -->
-    
-        <p class="mb-2">"Let see you how strong your memory...."</p>
-        <div class="text-gray-900 mb-3">
-          <h2 class="mb-2 text-lm text-white">Enter the PIN : ______</h2>
+      <!-- Challenge Text -->
+      <div>
+        <p class="text-lg text-white mb-4">"Let’s see how strong your memory is..."</p>
+        <div class="text-center text-xl text-white mb-4">
+          <h2>Enter the PIN: ______</h2>
         </div>
 
-          <label for="ans" class="block text-lm font-medium text-white">Your answer</label>
-          <input id="ans" name="ans" type="text" required
-          class="mt-1 block w-full px-3 py-2 bg-gray-600 text-gray-300 rounded-md 
-                      focus:outline-none focus:ring-2 focus:ring-indigo-500
-                      placeholder-gray-400"
+        <!-- Answer Input -->
+        <label for="ans" class="block text-lg font-medium text-white">Your answer</label>
+        <input id="ans" name="ans" type="text" required
+               class="mt-2 block w-full px-4 py-3 bg-gray-700 text-gray-300 rounded-md 
+                      focus:outline-none focus:ring-4 focus:ring-indigo-500 
+                      placeholder-gray-400 transition-all duration-200"
                placeholder="Enter your answer">
-      
+      </div>
 
       <!-- Submit Button -->
       <div>
         <button type="submit" 
                 class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md 
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
+                       transition-all duration-300">
           Submit
         </button>
       </div>
