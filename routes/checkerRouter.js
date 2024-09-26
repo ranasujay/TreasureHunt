@@ -78,7 +78,6 @@ router.post("/level4",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-
 router.post("/level5",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;
@@ -105,7 +104,6 @@ router.post("/level5",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-
 router.post("/level6",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;
@@ -131,7 +129,6 @@ router.post("/level6",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-
 router.post("/level7",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;
@@ -157,7 +154,6 @@ router.post("/level7",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-
 router.post("/level8",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;
@@ -184,7 +180,6 @@ router.post("/level8",isLoggedin, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-
 router.post("/level9",isLoggedin, async (req, res) => {
     try {
         let {ans} = req.body;

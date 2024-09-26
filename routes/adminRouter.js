@@ -6,8 +6,6 @@ const jwt = require("jsonwebtoken");
 
 
 
-
-
 router.post("/register",  async function(req,res){
     // res.send("hello");
     let {name, password} = req.body;
@@ -37,7 +35,6 @@ router.post("/register",  async function(req,res){
         })
     }
 });
-
 router.get("/leaderboard", async (req, res) => {
     try {
         // Fetch users sorted by currLevel in descending order
@@ -50,8 +47,6 @@ router.get("/leaderboard", async (req, res) => {
         res.redirect("/");
     }
 });
-
-
 
 
 module.exports =  router;
