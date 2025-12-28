@@ -1,12 +1,11 @@
-const mongoose = require('mongoose');
-const dbgr = require("debug")("development:mongoose");
+import mongoose from 'mongoose';
+import dbgr from 'debug';
+
+const debug = dbgr("development:mongoose");
 
 const connectDB = async () => {
     try {
-      const conn = await mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      } );
+      const conn = await mongoose.connect(process.env.MONGODB_URI);
       console.log(`MongoDB Connected: ${conn.connection.host}`);
       return conn;
     } catch (err) {
@@ -14,4 +13,4 @@ const connectDB = async () => {
     }
   };
 
-module.exports = connectDB;
+export default connectDB;

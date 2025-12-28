@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import userModel from '../models/userModel.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
 const router = express.Router();
-const userModel = require("../models/userModel");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 router.post("/login", async (req, res) => {
     const { name, password } = req.body;
@@ -11,28 +12,31 @@ router.post("/login", async (req, res) => {
         const user = await userModel.findOne({ name });
 
         if (!user) {
-            req.flash("error", "Name or password incorrect");
-            return res.redirect("/"); 
+            return res.status(401).json({ success: false, message: "Name or password incorrect" });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (isMatch) {
             const token = jwt.sign({ name, id: user._id }, process.env.JWT_SECRET || "secret");
-            res.cookie("token", token);
+            res.cookie("token", token, { httpOnly: true });
 
-            const currLevel = user.currLevel; // Use the found user directly
-            req.flash("success", "Logged in successfully.");
-            return res.redirect(`/level${currLevel}`);
+            return res.json({ 
+                success: true, 
+                message: "Logged in successfully",
+                user: {
+                    name: user.name,
+                    currLevel: user.currLevel,
+                    level: user.currLevel
+                }
+            });
         } else {
-            req.flash("error", "Name or password incorrect");
-            return res.redirect("/"); 
+            return res.status(401).json({ success: false, message: "Name or password incorrect" });
         }
     } catch (error) {
         console.error(error);
-        req.flash("error", "An unexpected error occurred.");
-        return res.redirect("/");
+        return res.status(500).json({ success: false, message: "An unexpected error occurred" });
     }
 });
 
-module.exports = router;
+export default router;

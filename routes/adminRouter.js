@@ -1,53 +1,67 @@
-const express = require('express');
+import express from 'express';
+import userModel from '../models/userModel.js';
+import bcrypt from 'bcrypt';
+
 const router = express.Router();
-const userModel = require("../models/userModel");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
+router.post("/register", async function(req, res) {
+    let { name, password } = req.body;
 
-
-router.post("/register",  async function(req,res){
-    // res.send("hello");
-    let {name, password} = req.body;
-
-    let user =  await userModel.findOne({name: name});
-    
-    if(user){
-        req.flash("error", "Aleady have an account, Please login")
-        res.redirect("/admin/register"); 
-    } 
-    
-    else{
-        bcrypt.genSalt(10, function(err, salt){
-            bcrypt.hash(password, salt, async function( err, hash){
-                if(err) res.send(err.massage);
-                else{
-                    let user = await userModel.create({
-                        name,
-                        password: hash
-                    })
-                    
-                    req.flash("success", "User created successfully")
-                    res.redirect("/admin/register"); 
-
-                }
-            })
-        })
-    }
-});
-router.get("/leaderboard", async (req, res) => {
     try {
-        // Fetch users sorted by currLevel in descending order
-        const users = await userModel.find().sort({ currLevel: -1 });
-        // Render the leaderboard page with the user data
-        res.render("leaderboard", { users });
+        let user = await userModel.findOne({ name: name });
+
+        if (user) {
+            return res.status(400).json({ 
+                success: false, 
+                message: "Already have an account, Please login" 
+            });
+        }
+
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(password, salt, async function(err, hash) {
+                if (err) {
+                    return res.status(500).json({ 
+                        success: false, 
+                        message: err.message 
+                    });
+                }
+                
+                let user = await userModel.create({
+                    name,
+                    password: hash
+                });
+
+                return res.json({ 
+                    success: true, 
+                    message: "User created successfully" 
+                });
+            });
+        });
     } catch (error) {
         console.error(error);
-        req.flash("error", "Failed to load leaderboard.");
-        res.redirect("/");
+        return res.status(500).json({ 
+            success: false, 
+            message: "An error occurred" 
+        });
     }
 });
 
+router.get("/leaderboard", async (req, res) => {
+    try {
+        // Sort by level (descending), then by completion time (ascending - earliest first)
+        const users = await userModel.find().sort({ 
+            currLevel: -1, 
+            lastLevelCompletedAt: 1 
+        });
+        res.json({ success: true, users });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ 
+            success: false, 
+            message: "Failed to load leaderboard" 
+        });
+    }
+});
 
-module.exports =  router;
+export default router;
 
